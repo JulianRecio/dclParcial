@@ -37,6 +37,18 @@ engine.addSystem(bounceScalingSystem)
 
 export function main() {
 
+  let museum = engine.addEntity()
+
+  GltfContainer.create(museum, {
+    src: 'models/torre.glb',
+  })
+
+  Transform.create(museum, {
+    position: Vector3.create(24,0,40.25),
+    scale: Vector3.create(1,1,1), 
+    rotation: Quaternion.fromEulerDegrees(0,270,0)  
+  })
+
   let pawn = engine.addEntity()
 
   GltfContainer.create(pawn, {
