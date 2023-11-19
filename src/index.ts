@@ -61,6 +61,7 @@ export function main() {
     rotation: Quaternion.fromEulerDegrees(0,270,0)  
   })
 
+
   let pawn = engine.addEntity()
 
   GltfContainer.create(pawn, {
@@ -68,8 +69,17 @@ export function main() {
   })
 
   Transform.create(pawn, {
-    position: Vector3.create(3, 0.85, 3),
+    position: Vector3.create(12, 1.8, 22),
     scale: Vector3.create(10,10,10)
+  })
+
+  let pawnColider = engine.addEntity()
+
+  MeshCollider.setCylinder(pawnColider)
+
+  Transform.create(pawnColider, {
+    position: Vector3.create(12, 1.8, 22),
+    scale: Vector3.create(2,1,1)
   })
 
 
@@ -80,10 +90,21 @@ export function main() {
   })
 
   Transform.create(mvArg, {
-    position: Vector3.create(6,0,8),
-    scale: Vector3.create(0.01,0.01,0.01),
+    position: Vector3.create(12, 0.9, 34),
+    scale: Vector3.create(0.02,0.02,0.02),
     rotation: Quaternion.fromEulerDegrees(0,90,0)
   })
+
+  let mvArgColider = engine.addEntity()
+
+  MeshCollider.setBox(mvArgColider)
+
+  Transform.create(mvArgColider, {
+    position: Vector3.create(12, 0.9, 33.5),
+    scale: Vector3.create(4,4.5,4),
+    rotation: Quaternion.fromEulerDegrees(0,90,0)
+  })
+
 
 
   let mustang = engine.addEntity()
@@ -93,8 +114,18 @@ export function main() {
   })
 
   Transform.create(mustang, {
-    position: Vector3.create(12,0,10),
+    position: Vector3.create(36,0.87,28),
     scale: Vector3.create(2,2,2),
+    rotation: Quaternion.fromEulerDegrees(0,145,0)
+  })
+
+  let mustangCollider = engine.addEntity()
+
+  MeshCollider.setBox(mustangCollider)
+
+  Transform.create(mustangCollider, {
+    position: Vector3.create(36,0.87,28),
+    scale: Vector3.create(3,4,7),
     rotation: Quaternion.fromEulerDegrees(0,145,0)
   })
 
@@ -105,8 +136,55 @@ export function main() {
   })
 
   Transform.create(duck, {
-    position: Vector3.create(2,1.65,8),
+    position: Vector3.create(18,2.6,38),
     scale: Vector3.create(0.5,0.5,0.5),
     rotation: Quaternion.fromEulerDegrees(0,125,0)
+  })
+  
+  let rubikCube = engine.addEntity()
+
+  GltfContainer.create(rubikCube,{
+    src: 'models/rubik.glb',
+  })
+
+  Transform.create(rubikCube,{
+    position: Vector3.create(12,0.85,44),
+    scale: Vector3.create(1,1,1),
+    rotation: Quaternion.fromEulerDegrees(0,45,0)
+    } 
+  )
+  
+  let lamp = engine.addEntity()
+
+  GltfContainer.create(lamp, {
+    src: 'models/lamp.glb'
+  })
+
+  Transform.create(lamp, {
+    position: Vector3.create(30,0.85,36),
+    scale: Vector3.create(0.5,0.5,0.5)
+  })
+
+  let lavaLamp = engine.addEntity()
+
+  GltfContainer.create(lavaLamp, {
+    src: 'models/lavalamp.glb'
+  })
+
+  Transform.create(lavaLamp, {
+    position: Vector3.create(20,0.85,26),
+    scale: Vector3.create(0.75,0.75,0.75)
+  })
+
+  let mongePuzzle1 = engine.addEntity()
+
+  GltfContainer.create(mongePuzzle1, {
+    src: 'models/vista1.glb'
+  })
+
+  Transform.create(mongePuzzle1, {
+    position: Vector3.create(24,0.85,48),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
   })
 }
