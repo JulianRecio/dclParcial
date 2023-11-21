@@ -201,7 +201,7 @@ export function main() {
     scale: Vector3.create(0.75,0.75,0.75),
     rotation: Quaternion.fromEulerDegrees(0,180,0)
   })
-/*
+
   let plant = engine.addEntity()
 
   GltfContainer.create(plant, {
@@ -221,7 +221,7 @@ export function main() {
     position: Vector3.create(39.5,3.3,51.25),
     scale: Vector3.create(3.5,3,3),
   })
-*/
+
   let mongePuzzleKey1 = engine.addEntity()
 
   GltfContainer.create(mongePuzzleKey1, {
@@ -426,7 +426,6 @@ export function main() {
       keysCollected++
       console.log("Keys collected: " + keysCollected)
     }
-/*
     if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle1Spot1) && keysCollected == 1){
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
@@ -452,7 +451,7 @@ export function main() {
 
       console.log("Keys collected: " + keysCollected)
     }
-*/
+
     if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle1Spot2) && keysCollected == 1){
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
@@ -955,4 +954,492 @@ export function main() {
   }
 
   )
+
+
+
+  let dragoon = engine.addEntity()
+
+  GltfContainer.create(dragoon,{
+    src: 'models/dragon.glb'
+  })
+
+  Transform.create(dragoon, {
+    position: Vector3.create(24,42,24),
+    scale: Vector3.create(10,10,10),
+    rotation: Quaternion.fromEulerDegrees(0,310,0)
+  }
+  )
+
+  let dragoonCollider1 = engine.addEntity()
+
+  MeshCollider.setCylinder(dragoonCollider1)
+  
+  Transform.create(dragoonCollider1, {
+    position: Vector3.create(25,43,22),
+    scale: Vector3.create(7,14,7),
+    rotation: Quaternion.fromEulerDegrees(0,0,90)
+  }
+  )
+
+  let dragoonCollider2 = engine.addEntity()
+
+  MeshCollider.setCylinder(dragoonCollider2)
+
+  Transform.create(dragoonCollider2, {
+    position: Vector3.create(18,41,29),
+    scale: Vector3.create(3,14,3),
+    rotation: Quaternion.fromEulerDegrees(0,90,90)
+  }
+  )
+
+  let dragoonCollider3 = engine.addEntity()
+
+  MeshCollider.setCylinder(dragoonCollider3)
+
+  Transform.create(dragoonCollider3, {
+    position: Vector3.create(25,40.5,37),
+    scale: Vector3.create(1,11,1),
+    rotation: Quaternion.fromEulerDegrees(0,0,90)
+  }
+  )
+
+  let tank = engine.addEntity()
+
+  GltfContainer.create(tank,{
+    src: 'models/Tank.glb'
+  })
+
+  Transform.create(tank, {
+    position: Vector3.create(10,39.65,28),
+    scale: Vector3.create(0.6,0.6,0.6),
+    rotation: Quaternion.fromEulerDegrees(0,290,0)
+  }
+  )
+
+  let tankCollider = engine.addEntity()
+
+  MeshCollider.setBox(tankCollider)
+
+  Transform.create(tankCollider, {
+    position: Vector3.create(10,41,28),
+    scale: Vector3.create(7,6,7),
+    rotation: Quaternion.fromEulerDegrees(0,290,0)
+  }
+  )
+
+  let policeCar = engine.addEntity()
+
+  GltfContainer.create(policeCar,{
+    src:'models/policeCar.glb'
+  })
+
+  Transform.create(policeCar, {
+    position: Vector3.create(29,39.5,46),
+    scale: Vector3.create(2.5,2.5,2.5),
+    rotation: Quaternion.fromEulerDegrees(0,210,0)
+  }
+  )
+
+  let policeCarCollider = engine.addEntity()
+
+  MeshCollider.setBox(policeCarCollider)
+
+  Transform.create(policeCarCollider, {
+    position: Vector3.create(29,41,46),
+    scale: Vector3.create(4,2.5,8.5),
+    rotation: Quaternion.fromEulerDegrees(0,210,0)
+  })
+
+  let snorlax = engine.addEntity()
+
+  GltfContainer.create(snorlax,{
+    src: 'models/snorlax.glb'
+  })
+
+  Transform.create(snorlax,{
+    position: Vector3.create(33.75,42.35,42),
+    scale: Vector3.create(12,12,12),
+    rotation: Quaternion.fromEulerDegrees(90,0,270)
+  })
+
+
+  let snorlaxCollider = engine.addEntity()
+
+  MeshCollider.setBox(snorlaxCollider)
+
+  Transform.create(snorlaxCollider,{
+    position: Vector3.create(34,41.5,42),
+    scale: Vector3.create(6,9,3),
+    rotation: Quaternion.fromEulerDegrees(90,0,270)
+  })
+
+  let xWing = engine.addEntity()
+
+  GltfContainer.create(xWing,{
+    src: 'models/xWing.glb'
+  })
+  
+  Transform.create(xWing,{
+    position: Vector3.create(34,48,30),
+    scale: Vector3.create(8,8,8),
+    rotation: Quaternion.fromEulerDegrees(310,315,180)
+  })
+
+  let arWing = engine.addEntity()
+
+
+  GltfContainer.create(arWing,{
+    src: 'models/arWing.glb'
+  })
+  
+  Transform.create(arWing,{
+    position: Vector3.create(24,48,46),
+    scale: Vector3.create(12,12,12),
+    rotation: Quaternion.fromEulerDegrees(30,300,60)
+  })
+
+  let masterSword = engine.addEntity()
+
+  GltfContainer.create(masterSword,{
+    src:'models/masterSword.glb'
+  })
+  
+  Transform.create(masterSword, {
+    position: Vector3.create(18,40,40),
+    scale: Vector3.create(0.5,0.5,0.5),
+    rotation: Quaternion.fromEulerDegrees(0,0,0)
+  })
+
+
+  let masterSwordCollider = engine.addEntity()
+
+  MeshCollider.setBox(masterSwordCollider)
+  
+  Transform.create(masterSwordCollider, {
+    position: Vector3.create(18.2,40.5,40),
+    scale: Vector3.create(0.5,1.75,0.5),
+    rotation: Quaternion.fromEulerDegrees(0,0,0)
+  })
+
+  let mongePuzzle3 = engine.addEntity()
+
+  GltfContainer.create(mongePuzzle3, {
+    src: 'models/vista3.glb'
+  })
+
+  Transform.create(mongePuzzle3, {
+    position: Vector3.create(24,39.5,32),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
+  })
+  
+  let mongePuzzleKey3 = engine.addEntity()
+
+  GltfContainer.create(mongePuzzleKey3, {
+    src: 'models/puzzleKey1.glb'
+  })
+
+  Transform.create(mongePuzzleKey3, {
+    position: Vector3.create(34,39.5,48),
+    scale: Vector3.create(0.75,0.75,0.75)
+  })
+
+  PointerEvents.create(mongePuzzleKey3, { pointerEvents: [
+    {
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Collect"
+      }
+    }
+  ]})
+
+  let monge3FrontView = engine.addEntity()
+ 
+  GltfContainer.create(monge3FrontView, {
+    src: 'models/frame3frontView.glb'
+  })
+
+  Transform.create(monge3FrontView, {
+    position: Vector3.create(36,46.5,17.5),
+    scale: Vector3.create(1.5,1.5,1.5),
+    rotation: Quaternion.fromEulerDegrees(90,0,0)
+  })
+
+  let monge3SideView = engine.addEntity()
+   
+  GltfContainer.create(monge3SideView, {
+    src: 'models/frame3sideView.glb'
+  })
+
+  Transform.create(monge3SideView, {
+    position: Vector3.create(5,41.5,24),
+    scale: Vector3.create(1,1,1),
+    rotation: Quaternion.fromEulerDegrees(90,90,0)
+  })
+
+  let monge3TopView = engine.addEntity()
+
+  GltfContainer.create(monge3TopView, {
+    src: 'models/frame3topView.glb'
+  })
+
+  Transform.create(monge3TopView, {
+    position: Vector3.create(36,57.25,44),
+    scale: Vector3.create(2,2,2),
+    rotation: Quaternion.fromEulerDegrees(0,180,180)
+  })
+
+  let mongePuzzle3Spot1 = engine.addEntity()
+
+  MeshCollider.setBox(mongePuzzle3Spot1)
+
+  Transform.create(mongePuzzle3Spot1, {
+    position: Vector3.create(24,41,32),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
+  })
+
+  PointerEvents.create(mongePuzzle3Spot1, { pointerEvents: [
+    {
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Put key"
+      }
+    },{
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_PRIMARY,
+        showFeedback: false,
+        hoverText: "Remove key"
+      }
+    }
+  ]})
+
+  let mongePuzzle3Spot2 = engine.addEntity()
+
+  MeshCollider.setBox(mongePuzzle3Spot2)
+
+  Transform.create(mongePuzzle3Spot2, {
+    position: Vector3.create(25.5,41,32),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
+  })
+
+  PointerEvents.create(mongePuzzle3Spot2, { pointerEvents: [
+    {
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Put key"
+      }
+    },{
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_PRIMARY,
+        showFeedback: false,
+        hoverText: "Remove key"
+      }
+    }
+  ]})
+
+  let mongePuzzle3Spot3 = engine.addEntity()
+
+  MeshCollider.setBox(mongePuzzle3Spot3)
+
+  Transform.create(mongePuzzle3Spot3, {
+    position: Vector3.create(25.5,41,30.5),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
+  })
+
+  PointerEvents.create(mongePuzzle3Spot3, { pointerEvents: [
+    {
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Put key"
+      }
+    },{
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_PRIMARY,
+        showFeedback: false,
+        hoverText: "Remove key"
+      }
+    }
+  ]})
+
+  let mongePuzzle3Spot4 = engine.addEntity()
+
+  MeshCollider.setBox(mongePuzzle3Spot4)
+
+  Transform.create(mongePuzzle3Spot4, {
+    position: Vector3.create(25.5,41,33.5),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
+  })
+
+  PointerEvents.create(mongePuzzle3Spot4, { pointerEvents: [
+    {
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Put key"
+      }
+    },{
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_PRIMARY,
+        showFeedback: false,
+        hoverText: "Remove key"
+      }
+    }
+  ]})
+
+  let mongePuzzle3Spot5 = engine.addEntity()
+
+  MeshCollider.setBox(mongePuzzle3Spot5)
+
+  Transform.create(mongePuzzle3Spot5, {
+    position: Vector3.create(24,42.5,33.5),
+    scale: Vector3.create(0.75,0.75,0.75),
+    rotation: Quaternion.fromEulerDegrees(0,180,0)
+  })
+
+  PointerEvents.create(mongePuzzle3Spot5, { pointerEvents: [
+    {
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Put key"
+      }
+    },{
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_PRIMARY,
+        showFeedback: false,
+        hoverText: "Remove key"
+      }
+    }
+  ]})
+
+  engine.addSystem(() => {
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzleKey3)){
+      console.log('COLLECTED KEY 3')
+      engine.removeEntity(mongePuzzleKey3)
+      keysCollected++
+      console.log("Keys collected: " + keysCollected)
+    }
+
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle3Spot1) && keysCollected == 1){
+      console.log('PLACED KEY 1 ON PUZZLE 1')
+      
+      GltfContainer.create(mongePuzzle3Spot1, {
+        src: 'models/puzzleKey1.glb'
+      })
+      keysCollected--
+/*
+      GltfContainer.deleteFrom(plant)
+      MeshCollider.deleteFrom(plantCollider)
+*/
+      console.log("Keys collected: " + keysCollected)
+    }
+    if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot1) && keysCollected == 0){
+      console.log('COLLECTED KEY 3')
+    
+      GltfContainer.deleteFrom(mongePuzzle3Spot1)
+      /*GltfContainer.create(plant, {
+        src: 'models/plant.glb'
+      })
+      MeshCollider.setBox(plantCollider)
+      */
+      keysCollected++
+
+      console.log("Keys collected: " + keysCollected)
+    }
+
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle3Spot2) && keysCollected == 1){
+      console.log('PLACED KEY 3 ON PUZZLE 3')
+      
+      GltfContainer.create(mongePuzzle3Spot2, {
+        src: 'models/puzzleKey1.glb'
+      })
+      keysCollected--
+      
+      console.log("Keys collected: " + keysCollected)
+    }
+    if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot2) && keysCollected == 0){
+      console.log('COLLECTED KEY 3')
+    
+      GltfContainer.deleteFrom(mongePuzzle3Spot2)
+      keysCollected++
+
+      console.log("Keys collected: " + keysCollected)
+    }
+
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle3Spot3) && keysCollected == 1){
+      console.log('PLACED KEY 3 ON PUZZLE 3')
+      
+      GltfContainer.create(mongePuzzle3Spot3, {
+        src: 'models/puzzleKey1.glb'
+      })
+      keysCollected--
+      
+      console.log("Keys collected: " + keysCollected)
+    }
+    if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot3) && keysCollected == 0){
+      console.log('COLLECTED KEY 3')
+    
+      GltfContainer.deleteFrom(mongePuzzle3Spot3)
+      keysCollected++
+
+      console.log("Keys collected: " + keysCollected)
+    }
+   
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle3Spot4) && keysCollected == 1){
+      console.log('PLACED KEY 3 ON PUZZLE 3')
+      
+      GltfContainer.create(mongePuzzle3Spot4, {
+        src: 'models/puzzleKey1.glb'
+      })
+      keysCollected--
+      
+      console.log("Keys collected: " + keysCollected)
+    }
+    if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot4) && keysCollected == 0){
+      console.log('COLLECTED KEY 3')
+    
+      GltfContainer.deleteFrom(mongePuzzle3Spot4)
+      keysCollected++
+
+      console.log("Keys collected: " + keysCollected)
+    }
+
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle3Spot5) && keysCollected == 1){
+      console.log('PLACED KEY 3 ON PUZZLE 3')
+      
+      GltfContainer.create(mongePuzzle3Spot5, {
+        src: 'models/puzzleKey1.glb'
+      })
+      keysCollected--
+      
+      console.log("Keys collected: " + keysCollected)
+    }
+    if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot5) && keysCollected == 0){
+      console.log('COLLECTED KEY 3')
+    
+      GltfContainer.deleteFrom(mongePuzzle3Spot5)
+      keysCollected++
+
+      console.log("Keys collected: " + keysCollected)
+    }
+  })
 }
