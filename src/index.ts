@@ -1,7 +1,9 @@
 import {
   Animator,
   AudioSource,
+  AudioStream,
   AvatarAttach,
+  AvatarShape,
   engine,
   GltfContainer,
   InputAction,
@@ -15,7 +17,7 @@ import {
   Transform,
   VisibilityComponent
 } from '@dcl/sdk/ecs'
-import { Color4, Quaternion, Vector3 } from '@dcl/sdk/math'
+import { Color3, Color4, Quaternion, Vector3 } from '@dcl/sdk/math'
 import { initAssetPacks } from '@dcl/asset-packs/dist/scene-entrypoint'
 
 // You can remove this if you don't use any asset packs
@@ -39,6 +41,17 @@ engine.addSystem(circularSystem)
 engine.addSystem(bounceScalingSystem)
 
 export function main() {
+
+  /*
+
+AudioStream.create(streamEntity, {
+  url: 'https://icecast.ravepartyradio.org/ravepartyradio-192.mp3',
+  playing: true,
+  volume: 0.8,
+  */
+
+  //let audio_stream = engine.addEntity()
+
 
   let tower = engine.addEntity()
 
@@ -64,6 +77,18 @@ export function main() {
     rotation: Quaternion.fromEulerDegrees(0,270,0)  
   })
 
+  let instruction = engine.addEntity()
+
+  
+  GltfContainer.create(instruction, {
+    src: 'models/instruction.glb',
+  })
+
+  Transform.create(instruction, {
+    position: Vector3.create(42.95,14,35),
+    scale: Vector3.create(0.9,0.9,0.9),
+    rotation: Quaternion.fromEulerDegrees(90,90,180)  
+  })
 
   let pawn = engine.addEntity()
 
