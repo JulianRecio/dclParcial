@@ -5,6 +5,7 @@ import {
   AvatarAttach,
   AvatarShape,
   engine,
+  Entity,
   GltfContainer,
   InputAction,
   inputSystem,
@@ -42,17 +43,6 @@ engine.addSystem(bounceScalingSystem)
 
 export function main() {
 
-  /*
-
-AudioStream.create(streamEntity, {
-  url: 'https://icecast.ravepartyradio.org/ravepartyradio-192.mp3',
-  playing: true,
-  volume: 0.8,
-  */
-
-  //let audio_stream = engine.addEntity()
-
-
   let tower = engine.addEntity()
 
   GltfContainer.create(tower, {
@@ -76,6 +66,14 @@ AudioStream.create(streamEntity, {
     scale: Vector3.create(1,1,1), 
     rotation: Quaternion.fromEulerDegrees(0,270,0)  
   })
+
+  // Create AudioSource component
+  AudioSource.create(museum, {
+    audioClipUrl: 'sounds/InsideDekuTree.mp3',
+    loop: true,
+    playing: true,
+  })
+
 
   let instruction = engine.addEntity()
 
@@ -250,7 +248,7 @@ AudioStream.create(streamEntity, {
   let mongePuzzleKey1 = engine.addEntity()
 
   GltfContainer.create(mongePuzzleKey1, {
-    src: 'models/puzzleKey1.glb'
+    src: 'models/puzzleKey.glb'
   })
 
   Transform.create(mongePuzzleKey1, {
@@ -455,10 +453,11 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
       GltfContainer.create(mongePuzzle1Spot1, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
 
+      playPuzzleSolvedSFX(mongePuzzle1)
       GltfContainer.deleteFrom(plant)
       MeshCollider.deleteFrom(plantCollider)
 
@@ -481,7 +480,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
       GltfContainer.create(mongePuzzle1Spot2, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -500,7 +499,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
       GltfContainer.create(mongePuzzle1Spot3, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -519,7 +518,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
       GltfContainer.create(mongePuzzle1Spot4, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -538,7 +537,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 1 ON PUZZLE 1')
       
       GltfContainer.create(mongePuzzle1Spot5, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -768,7 +767,7 @@ AudioStream.create(streamEntity, {
   let mongePuzzleKey2 = engine.addEntity()
 
   GltfContainer.create(mongePuzzleKey2, {
-    src: 'models/puzzleKey1.glb'
+    src: 'models/puzzleKey.glb'
   })
 
   Transform.create(mongePuzzleKey2, {
@@ -916,11 +915,11 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 2 ON PUZZLE 2')
       
       GltfContainer.create(mongePuzzle2Spot1, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
-    
       keysCollected--
 
+      playPuzzleSolvedSFX(mongePuzzle2)
       GltfContainer.deleteFrom(eightBall)
       MeshCollider.deleteFrom(eightBallCollider)
 
@@ -942,7 +941,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 2 ON PUZZLE 2')
       
       GltfContainer.create(mongePuzzle2Spot2, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -961,7 +960,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 2 ON PUZZLE 2')
       
       GltfContainer.create(mongePuzzle2Spot3, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -1161,7 +1160,7 @@ AudioStream.create(streamEntity, {
   let mongePuzzleKey3 = engine.addEntity()
 
   GltfContainer.create(mongePuzzleKey3, {
-    src: 'models/puzzleKey1.glb'
+    src: 'models/puzzleKey.glb'
   })
 
   Transform.create(mongePuzzleKey3, {
@@ -1365,16 +1364,17 @@ AudioStream.create(streamEntity, {
     }
 
     if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, mongePuzzle3Spot1) && keysCollected == 1){
-      console.log('PLACED KEY 1 ON PUZZLE 1')
+      console.log('PLACED KEY 3 ON PUZZLE 3')
       
       GltfContainer.create(mongePuzzle3Spot1, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
 /*
       GltfContainer.deleteFrom(plant)
       MeshCollider.deleteFrom(plantCollider)
 */
+      playPuzzleSolvedSFX(mongePuzzle3)
       console.log("Keys collected: " + keysCollected)
     }
     if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot1) && keysCollected == 0){
@@ -1395,7 +1395,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 3 ON PUZZLE 3')
       
       GltfContainer.create(mongePuzzle3Spot2, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -1414,7 +1414,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 3 ON PUZZLE 3')
       
       GltfContainer.create(mongePuzzle3Spot3, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -1433,7 +1433,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 3 ON PUZZLE 3')
       
       GltfContainer.create(mongePuzzle3Spot4, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -1452,7 +1452,7 @@ AudioStream.create(streamEntity, {
       console.log('PLACED KEY 3 ON PUZZLE 3')
       
       GltfContainer.create(mongePuzzle3Spot5, {
-        src: 'models/puzzleKey1.glb'
+        src: 'models/puzzleKey.glb'
       })
       keysCollected--
       
@@ -1468,3 +1468,12 @@ AudioStream.create(streamEntity, {
     }
   })
 }
+
+function playPuzzleSolvedSFX(entity: Entity) {
+  AudioSource.create(entity, {
+    audioClipUrl: 'sounds/PuzzleSolved.mp3',
+    loop: false,
+    playing: true,
+  })
+}
+
