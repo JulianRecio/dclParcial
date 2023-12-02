@@ -25,7 +25,8 @@
     "trailingComma": "none"
   },
   "dependencies": {
-    "@dcl/npc-scene-utils": "^1.5.1"
+    "@dcl/npc-scene-utils": "^1.5.1",
+    "decentraland-ecs": "^6.12.2"
   },
   "bundleDependencies": [
     "@dcl/npc-scene-utils"

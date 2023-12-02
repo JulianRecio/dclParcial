@@ -77,3 +77,117 @@ function getPlayerPosition() {
   return `{X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, z: ${z.toFixed(2)} }`
 }
 
+export function setupCongratulationsMessage() {
+  ReactEcsRenderer.setUiRenderer(finalMEssage)
+}
+
+const congratulationsMessage = () =>(
+  <UiEntity
+  uiTransform={{
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent:'space-between',
+    positionType: 'absolute',
+    position: { right: '50%', top: '15%' }
+  }}
+  >   
+  <Label
+  value="Congratulations!"
+  fontSize={18}
+  textAlign="middle-center"
+  />
+  </UiEntity>
+)
+
+const sendOffMessage = () =>(
+  <UiEntity
+  uiTransform={{
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent:'space-between',
+    positionType: 'absolute',
+    position: { right: '50%', bottom: '15%' }
+  }}
+  >   
+  <Label
+  value="You have completede the museum challenge, you mastered the Monge system!"
+  fontSize={18}
+  textAlign="middle-center"
+  />
+  </UiEntity>
+)
+
+const thankYouMessage  = () =>(
+  <UiEntity
+  uiTransform={{
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent:'space-between',
+    positionType: 'absolute',
+    position: { right: '50%', bottom: '10%' }
+  }}
+  >   
+  <Label
+  value="Thank you for playing!"
+  fontSize={18}
+  textAlign="middle-center"
+  />
+  </UiEntity>
+)
+
+const finalMEssage = () =>(
+  <UiEntity
+  uiTransform={{
+    position:{left: '50%'}
+  }}
+  >   
+    <UiEntity
+    uiTransform={{
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent:'space-between',
+      positionType: 'absolute',
+      position: {top: '15%'}
+    }}
+    >
+      <Label
+      value="Congratulations!"
+      fontSize={24}
+      textAlign="middle-center"
+      />
+    </UiEntity>
+
+    <UiEntity
+     uiTransform={{
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent:'space-between',
+      positionType: 'absolute',
+      position: {bottom: '15%'}
+    }}
+    >
+      <Label
+      value="You have completed the museum challenge, you mastered the Monge system!"
+      fontSize={24}
+      textAlign="middle-center"
+      />
+    </UiEntity>
+
+    <UiEntity
+     uiTransform={{
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent:'space-between',
+      positionType: 'absolute',
+      position: { bottom: '10%'}
+    }}
+    >
+      <Label
+      value="Thank you for playing!"
+      fontSize={24}
+      textAlign="middle-center"
+      />
+    </UiEntity>
+  </UiEntity>
+)
+

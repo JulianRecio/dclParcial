@@ -1,24 +1,19 @@
 import {
   Animator,
   AudioSource,
-  AudioStream,
   AvatarAttach,
-  AvatarShape,
   engine,
   Entity,
   GltfContainer,
   InputAction,
   inputSystem,
-  Material,
   MeshCollider,
-  MeshRenderer,
   PointerEvents,
   pointerEventsSystem,
   PointerEventType,
   Transform,
-  VisibilityComponent
-} from '@dcl/sdk/ecs'
-import { Color3, Color4, Quaternion, Vector3 } from '@dcl/sdk/math'
+  VisibilityComponent} from '@dcl/sdk/ecs'
+import { Color4, Quaternion, Vector3 } from '@dcl/sdk/math'
 import { initAssetPacks } from '@dcl/asset-packs/dist/scene-entrypoint'
 
 // You can remove this if you don't use any asset packs
@@ -33,9 +28,9 @@ initAssetPacks(engine, pointerEventsSystem, {
 
 import { bounceScalingSystem, circularSystem } from './systems'
 
-import { setupUi } from './ui'
-import { BounceScaling, Spinner } from './components'
-import { createCube } from './factory'
+import { movePlayerTo, triggerEmote } from '~system/RestrictedActions'
+import { setupCongratulationsMessage, setupUi } from './ui'
+
 
 // Defining behavior. See `src/systems.ts` file.
 engine.addSystem(circularSystem)
@@ -470,6 +465,8 @@ export function main() {
       GltfContainer.create(plant, {
         src: 'models/plant.glb'
       })
+      
+      resetPuzzleSolvedSFX(mongePuzzle1)
       MeshCollider.setBox(plantCollider)
       keysCollected++
 
@@ -933,6 +930,7 @@ export function main() {
         src: 'models/eightBall.glb'
       })
       MeshCollider.setSphere(eightBallCollider)
+      resetPuzzleSolvedSFX(mongePuzzle2)
       keysCollected++
 
       console.log("Keys collected: " + keysCollected)
@@ -1370,22 +1368,19 @@ export function main() {
         src: 'models/puzzleKey.glb'
       })
       keysCollected--
-/*
-      GltfContainer.deleteFrom(plant)
-      MeshCollider.deleteFrom(plantCollider)
-*/
+
       playPuzzleSolvedSFX(mongePuzzle3)
+      AudioSource.deleteFrom(museum)
+      movePlayerTo({
+        newRelativePosition: Vector3.create(24,70,38),
+        cameraTarget: Vector3.create(24, 70, 8),})
       console.log("Keys collected: " + keysCollected)
     }
     if (inputSystem.isTriggered(InputAction.IA_PRIMARY, PointerEventType.PET_DOWN, mongePuzzle3Spot1) && keysCollected == 0){
       console.log('COLLECTED KEY 3')
     
       GltfContainer.deleteFrom(mongePuzzle3Spot1)
-      /*GltfContainer.create(plant, {
-        src: 'models/plant.glb'
-      })
-      MeshCollider.setBox(plantCollider)
-      */
+      resetPuzzleSolvedSFX(mongePuzzle3)
       keysCollected++
 
       console.log("Keys collected: " + keysCollected)
@@ -1467,11 +1462,63 @@ export function main() {
       console.log("Keys collected: " + keysCollected)
     }
   })
+
+  let uAToken = engine.addEntity()
+
+  GltfContainer.create(uAToken, {
+    src: 'models/UAtoken.glb'})
+
+  Transform.create(uAToken,{
+    position: Vector3.create(24, 61, 24),
+    scale: Vector3.create(0.25,0.25,0.25)
+  })
+
+  let tokenCollider = engine.addEntity()
+
+  MeshCollider.setBox(tokenCollider)
+
+  Transform.create(tokenCollider,{
+    position: Vector3.create(24, 61, 24),
+  })
+
+  PointerEvents.create(tokenCollider,{
+    pointerEvents: [{
+      eventType: PointerEventType.PET_DOWN,
+      eventInfo: {
+        button: InputAction.IA_POINTER,
+        showFeedback: false,
+        hoverText: "Collect"
+      }}]})
+
+  engine.addSystem(()=>{
+    if (inputSystem.isTriggered(InputAction.IA_POINTER, PointerEventType.PET_DOWN, tokenCollider)){
+      console.log('COLLECTED TOKEN')
+      
+      setupCongratulationsMessage()
+      triggerEmote({predefinedEmote: 'robot'})
+      GltfContainer.deleteFrom(uAToken)
+      MeshCollider.deleteFrom(tokenCollider)
+      playVictorySFX(museum)
+    }}) 
+
 }
 
 function playPuzzleSolvedSFX(entity: Entity) {
   AudioSource.create(entity, {
     audioClipUrl: 'sounds/PuzzleSolved.mp3',
+    loop: false,
+    playing: true,
+  })
+}
+
+function resetPuzzleSolvedSFX(entity: Entity) {
+  AudioSource.deleteFrom(entity)
+}
+
+
+function playVictorySFX(entity: Entity) {
+  AudioSource.create(entity, {
+    audioClipUrl: 'sounds/stageComplete.mp3',
     loop: false,
     playing: true,
   })
